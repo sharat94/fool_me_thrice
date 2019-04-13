@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  database: fool_me_thrice_dev
+  host: localhost
+  username:
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  database: fool_me_thrice_dev_test
+  host: localhost
+  username:
+  password:
+
