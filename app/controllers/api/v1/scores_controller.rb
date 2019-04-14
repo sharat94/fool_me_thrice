@@ -7,26 +7,27 @@ class Api::V1::ScoresController < Api::ApiController
     if answer == true
       card.upvote += 1
       card.save!
-      update_user_score(card)
+      if !card.fake
+        @current_user.correct_answers += 1
+        @current_user.save!
+      else
+        @current_user.wrong_answers += 1
+        @current_user.save!
+      end
+      @current_user.reload
     else
       card.downvote += 1
       card.save!
-      update_user_score(card)
+      if card.fake
+        @current_user.correct_answers += 1
+        @current_user.save!
+      else
+        @current_user.wrong_answers += 1
+        @current_user.save!
+      end
+      @current_user.reload
     end
     render json: @current_user
   end
 
-
-  private
-
-  def update_user_score(card)
-    if !card.fake
-      @current_user.correct_answers += 1
-      @current_user.save!
-    else
-      @current_user.wrong_answers += 1
-      @current_user.save!
-    end
-    @current_user.reload
-  end
 end
