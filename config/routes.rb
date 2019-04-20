@@ -12,9 +12,9 @@ Rails.application.routes.draw do
       get 'topics', to: 'topics#index'
       post 'update_user_topic', to: 'topics#update_user_topic'
       post 'update_score', to: 'scores#update_score'
-      post 'cards', to: 'cards#index'
+      get 'cards', to: 'cards#index'
       post 'update_user_topic', to: 'cards#update_user_topic'
-      post 'make_card', to: 'cards#make_card'
+      get 'get_keywords', to: 'cards#get_keywords'
       post 'create_card', to: 'cards#create'
     end
   end

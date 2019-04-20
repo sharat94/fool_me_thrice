@@ -19,22 +19,14 @@ ActiveRecord::Schema.define(version: 2019_04_13_192748) do
     t.bigint "user_id"
     t.text "description"
     t.bigint "topic_id"
-    t.integer "upvotes"
-    t.integer "downvotes"
+    t.integer "upvotes", default: 0
+    t.integer "downvotes", default: 0
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "fake", default: false
     t.index ["topic_id"], name: "index_cards_on_topic_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
-  create_table "cards_reads", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "card_id"], name: "index_cards_reads_on_user_id_and_card_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -67,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_192748) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "correct_answers"
-    t.integer "wrong_answers"
+    t.integer "correct_answers", default: 0
+    t.integer "wrong_answers", default: 0
     t.string "badges", default: [], array: true
     t.integer "cards_read", default: [], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
