@@ -17,7 +17,7 @@ class Api::V1::CardsController < Api::ApiController
   	topics =  Topic.left_outer_joins(:cards).select("topics.*, COUNT(cards.*) as cards_count").group("topics.id").uniq
   	count = []
 		if topics.present?
-  	  topics.tap{ |topic| count.push(topic.cards.count) }
+  	  topics.map{ |topic| count.push(topic.cards.count) }
   	  min_count = count.min
   	  min_topic = topics.select{ |topic| topic.cards.count == min_count }.last
   	  subjects = Subject.where(topic: min_topic).sample(3)
