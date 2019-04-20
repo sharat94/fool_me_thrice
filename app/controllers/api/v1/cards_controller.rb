@@ -20,7 +20,7 @@ class Api::V1::CardsController < Api::ApiController
   	min_count = count.min
   	min_topic = topics.select{ |topic| topic.cards_count == min_count }.last
   	subjects = Subject.where(topic: min_topic).sample(3)
-  	verbs = Verb.where(topic: min_topic).sample(3)
+  	verbs = Verb.where(topic: min_topic).sample(2)
   	victims = Victim.where(topic: min_topic).sample(3)
   	payload = { topic: min_topic, subjects: subjects, verbs: verbs, victims: victims}
   	render json: payload
