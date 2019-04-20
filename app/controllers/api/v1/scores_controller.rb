@@ -4,7 +4,6 @@ class Api::V1::ScoresController < Api::ApiController
     card_id = params[:card_id]
     answer = params[:answer]
     card = Card.find card_id
-    .update( )
     if answer == true
       card.upvotes += 1
       card.save!
