@@ -9,8 +9,8 @@ class Api::V1::TopicsController < Api::ApiController
 
   def update_user_topic
     topic_ids = params[:topic_ids]
-    @current_usser.topic_ids = topic_ids
-    render json: @current_usser
+    @current_user.topic_ids = topic_ids
+    render json: @current_user
   end
 
 end

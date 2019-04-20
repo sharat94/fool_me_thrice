@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::AuthenticationController < ApplicationController
-
+  protect_from_forgery with: :null_session
   def authenticate
     command = AuthenticateUser.call(params[:email], params[:password])
 

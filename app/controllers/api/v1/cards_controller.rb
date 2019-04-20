@@ -10,6 +10,7 @@ class Api::V1::CardsController < Api::ApiController
   def update_user_topic
     topic_ids = params[:topic_ids]
     @current_user.topic_ids = topic_ids
+		@current_user.save!
   end
 
   def make_card

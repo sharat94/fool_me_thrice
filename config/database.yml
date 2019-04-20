@@ -16,3 +16,12 @@ test:
   username:
   password:
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  username: "postgres"
+  password: "password"
+  database: "fool_me_thrice_production"
+  host:   "/cloudsql/fool-me-thrice:asia-south1:fool-me-thrice"

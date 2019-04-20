@@ -1,0 +1,12 @@
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+
+env_variables:
+  SECRET_KEY_BASE: fbfa93206b201acad43a66ac6f31ec239ede30bc98d98782166a57a72acf7ffeda00674642c267729d9aa48d8de511c955108336552a0ff864879d3a327f7931
+
+network:
+  name: default
+
+beta_settings:
+  cloud_sql_instances: fool-me-thrice:asia-south1:fool-me-thrice
