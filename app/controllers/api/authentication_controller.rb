@@ -6,7 +6,8 @@ class Api::AuthenticationController < ApplicationController
     command = AuthenticateUser.call(params[:email], params[:password])
 
     if command.success?
-      render json: { auth_token: command.result }
+      topics = User.find_by(email: params[:email])&.topics || []
+      render json: { auth_token: command.result, topics: topics }
     else
       render json: { error: command.errors }, status: :unauthorized
     end
