@@ -21,6 +21,10 @@ class CardsController < ApplicationController
   def edit
   end
 
+  def import
+    Card.import(params[:file])
+    redirect_to root_url, notice: "Cards imported."
+  end
   # POST /cards
   # POST /cards.json
   def create

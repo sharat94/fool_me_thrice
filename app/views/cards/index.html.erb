@@ -35,3 +35,12 @@
 <br>
 
 <%= link_to 'New Card', new_card_path %>
+
+
+
+<h2>Import Cards</h2>
+
+<%= form_tag import_cards_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
