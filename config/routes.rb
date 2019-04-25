@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     post 'authenticate', to: 'authentication#authenticate'
+    post 'create_user', to: 'users#create_user'
     namespace :v1 do
       get 'topics', to: 'topics#index'
       post 'update_user_topic', to: 'topics#update_user_topic'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       post 'update_user_topic', to: 'cards#update_user_topic'
       get 'get_keywords', to: 'cards#get_keywords'
       post 'create_card', to: 'cards#create'
+      post 'statistics', to: 'dashboards#stats'
     end
   end
     root to: "topics#index"

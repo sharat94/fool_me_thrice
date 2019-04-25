@@ -13,6 +13,7 @@ module FoolMeThrice
     config.autoload_paths << Rails.root.join('commands')
     config.eager_load_paths << Rails.root.join('lib')
     config.action_controller.forgery_protection_origin_check = false
+    config.force_ssl = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

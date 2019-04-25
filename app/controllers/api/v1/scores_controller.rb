@@ -8,10 +8,12 @@ class Api::V1::ScoresController < Api::ApiController
       card.upvotes += 1
       card.save!
       if !card.fake
+        winner = true
         @current_user.correct_answers += 1
         @current_user.cards_read.push(card.id)
         @current_user.save!
       else
+        winner = false
         @current_user.wrong_answers += 1
         @current_user.cards_read.push(card.id)
         @current_user.save!
@@ -21,17 +23,22 @@ class Api::V1::ScoresController < Api::ApiController
       card.downvotes += 1
       card.save!
       if card.fake
+        winner = true
         @current_user.correct_answers += 1
         @current_user.cards_read.push(card.id)
         @current_user.save!
       else
+        winner = false
         @current_user.wrong_answers += 1
         @current_user.cards_read.push(card.id)
         @current_user.save!
       end
       @current_user.reload
     end
-    render json: @current_user
+    payload = { winner: winner, user: card&.user&.email }
+    render json: payload
   end
+
+  private
 
 end

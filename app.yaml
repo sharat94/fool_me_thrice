@@ -8,5 +8,8 @@ env_variables:
 network:
   name: default
 
+runtime_config:
+  document_root: web
+
 beta_settings:
   cloud_sql_instances: fool-me-thrice:asia-south1:fool-me-thrice
