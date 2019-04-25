@@ -12,6 +12,10 @@ class SubjectsController < ApplicationController
   def show
   end
 
+  def import
+    Subject.import(params[:file])
+    redirect_to root_url, notice: "Subjects imported."
+  end
   # GET /subjects/new
   def new
     @subject = Subject.new

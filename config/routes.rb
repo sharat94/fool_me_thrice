@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :subjects
-  resources :verbs
-  resources :victims
-  resources :topics
+  resources :subjects do
+    collection { post :import }
+  end
+  resources :verbs do
+    collection { post :import }
+  end
+  resources :victims do
+    collection { post :import }
+  end
+  resources :topics do
+    collection { post :import }
+  end
 
   namespace :api do
     post 'authenticate', to: 'authentication#authenticate'

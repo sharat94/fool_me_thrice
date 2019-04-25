@@ -7,6 +7,10 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def import
+    Topic.import(params[:file])
+    redirect_to root_url, notice: "Topics imported."
+  end
   # GET /topics/1
   # GET /topics/1.json
   def show

@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
+        <td><%= topic.id %></td>
         <td><%= topic.name %></td>
         <td><%= link_to 'Show', topic %></td>
         <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
@@ -25,3 +27,10 @@
 <br>
 
 <%= link_to 'New Topic', new_topic_path %>
+
+<h2>Import Topics</h2>
+
+<%= form_tag import_topics_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

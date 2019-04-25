@@ -12,6 +12,10 @@ class VerbsController < ApplicationController
   def show
   end
 
+  def import
+    Verb.import(params[:file])
+    redirect_to root_url, notice: "Verbs imported."
+  end
   # GET /verbs/new
   def new
     @verb = Verb.new

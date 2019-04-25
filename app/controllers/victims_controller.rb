@@ -7,6 +7,10 @@ class VictimsController < ApplicationController
     @victims = Victim.all
   end
 
+  def import
+    Victim.import(params[:file])
+    redirect_to root_url, notice: "Victims imported."
+  end
   # GET /victims/1
   # GET /victims/1.json
   def show
