@@ -10,10 +10,6 @@ class Api::UsersController < ApplicationController
       if !user.new_record?
         render json: { errors: 'User Already Exists' }  and return
       end
-      if user.new_record?
-        user.skip_confirmation!
-        user.confirm!
-      end
       user.save!
       render json: {message: 'User successfully created'} if user.errors.blank?
     rescue ActiveRecord::RecordInvalid => e
