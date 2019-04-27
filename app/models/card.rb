@@ -7,6 +7,7 @@ class Card < ApplicationRecord
       card = find_by_id(row["id"]) || new
       card.attributes = row.to_hash.slice('user_id', 'description', 'topic_id', 'source', 'fake
 ')
+      next if row.to_hash['topic_id'].nil?
       card.attributes['fake'] = row.to_hash['fake'].casecmp('true').zero?
       card.save!
     end
