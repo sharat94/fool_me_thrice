@@ -1,7 +1,7 @@
 class Api::V1::CardsController < Api::ApiController
 
   def index
-    cards = Card.where(topic: @current_user.topics)
+    cards = Card.where(topic: @current_user.topics).order("RANDOM()")
     selected_cards = cards&.ids - (@current_user.cards_read + @current_user&.cards&.ids)
 		display_cards = cards.select{ |card| selected_cards.include? card.id } if selected_cards.present?
   	render json: display_cards || []
